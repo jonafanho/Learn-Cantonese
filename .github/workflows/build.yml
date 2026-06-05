@@ -1,0 +1,40 @@
+name: Build
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    name: Build Angular
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Setup Node
+        uses: actions/setup-node@main
+        with:
+          node-version: 24
+      - name: Install Node packages
+        run: npm ci --prefix frontend --force
+      - name: Update packages
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
+        run: npm run update-all --prefix frontend
+      - name: Build Angular
+        run: npm run build --prefix frontend
+      - name: Capture main build artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: Main
+          path: frontend/dist/website/browser/
+      - name: Commit changes
+        uses: iarekylew00t/verified-bot-commit@main
+        if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' }}
+        with:
+          message: Update Angular
+          files: |
+            frontend/package.json
+            frontend/package-lock.json
+          max-retries: 5

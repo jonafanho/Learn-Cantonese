@@ -1,0 +1,23 @@
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+
+# --- Java / Gradle ---
+backend/build/
+backend/.gradle/
+backend/out/
+backend/bin/
+backend/src/main/resources/static/
+*.class
+*.log
+
+# --- Node / Angular ---
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+frontend/.gitignore
+npm-debug.log*

@@ -1,0 +1,33 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"packVersion": "1.0.0",
+	"id": "cha-chaan-teng",
+	"titleKey": "chapter.chaChaanTeng.title",
+	"descriptionKey": "chapter.chaChaanTeng.description",
+	"feedbackProfiles": {
+		"feedback_profile_cha_chaan_teng": {
+			"id": "feedback_profile_cha_chaan_teng",
+			"tiers": [
+				{
+					"minLevel": 0.8,
+					"meterColor": "success",
+					"headlineKey": "feedback.chaChaanTeng.success.headline",
+					"subtextKey": "feedback.chaChaanTeng.success.subtext"
+				},
+				{
+					"minLevel": 0.4,
+					"meterColor": "warning",
+					"headlineKey": "feedback.chaChaanTeng.warning.headline",
+					"subtextKey": "feedback.chaChaanTeng.warning.subtext"
+				},
+				{
+					"minLevel": 0,
+					"meterColor": "danger",
+					"headlineKey": "feedback.chaChaanTeng.danger.headline",
+					"subtextKey": "feedback.chaChaanTeng.danger.subtext"
+				}
+			]
+		}
+	},
+	"sections": []
+}

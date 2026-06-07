@@ -1,0 +1,58 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"packVersion": "1.0.0",
+	"id": "hkia",
+	"titleKey": "chapter.hkia.title",
+	"descriptionKey": "chapter.hkia.description",
+	"feedbackProfiles": {
+		"feedback_profile_taxi": {
+			"id": "feedback_profile_taxi",
+			"tiers": [
+				{
+					"minLevel": 0.8,
+					"meterColor": "success",
+					"headlineKey": "feedback.taxi.success.headline",
+					"subtextKey": "feedback.taxi.success.subtext"
+				},
+				{
+					"minLevel": 0.4,
+					"meterColor": "warning",
+					"headlineKey": "feedback.taxi.warning.headline",
+					"subtextKey": "feedback.taxi.warning.subtext"
+				},
+				{
+					"minLevel": 0,
+					"meterColor": "danger",
+					"headlineKey": "feedback.taxi.danger.headline",
+					"subtextKey": "feedback.taxi.danger.subtext"
+				}
+			]
+		}
+	},
+	"sections": [
+		{
+			"id": "section_01_taxi",
+			"titleKey": "chapter.hkia.section_01_taxi.title",
+			"descriptionKey": "chapter.hkia.section_01_taxi.description",
+			"feedbackProfileId": "feedback_profile_taxi",
+			"cards": [
+				{
+					"id": "card_taxi_001",
+					"promptKey": "chapter.hkia.card_taxi_001.prompt",
+					"translationKey": "chapter.hkia.card_taxi_001.translation",
+					"contextualHintKey": "chapter.hkia.card_taxi_001.contextualHint",
+					"romanizationVisualFonts": "m4_goi1_maai4_bin1_ting4",
+					"audioAssetPath": "audio/m4goi_maaibin_ting4.mp3",
+					"imageAssetPath": "images/pull-over.svg",
+					"toneSequence": [
+						4,
+						1,
+						4,
+						1,
+						4
+					]
+				}
+			]
+		}
+	]
+}

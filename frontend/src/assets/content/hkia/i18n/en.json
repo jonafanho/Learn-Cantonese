@@ -1,0 +1,33 @@
+{
+	"chapter": {
+		"hkia": {
+			"title": "Chapter 1: Landing at HKIA",
+			"description": "Survive the airport arrival, grab an Octopus card, and catch a red urban taxi.",
+			"section_01_taxi": {
+				"title": "Hailing a Red Taxi",
+				"description": "Learn key phrases to flag down a taxi and give directions to the driver."
+			},
+			"card_taxi_001": {
+				"prompt": "m4_goi1_maai4_bin1_ting4",
+				"translation": "Excuse me, pull over on the side please.",
+				"contextualHint": "Use right before your designated destination building."
+			}
+		}
+	},
+	"feedback": {
+		"taxi": {
+			"success": {
+				"headline": "True Hongkonger Speed!",
+				"subtext": "The taxi driver understood your directions instantly and nodded. Perfect tones."
+			},
+			"warning": {
+				"headline": "The English Pivot",
+				"subtext": "The driver understood after a brief pause, then replied in English to confirm. Your accent gave you away."
+			},
+			"danger": {
+				"headline": "Complete Blank Stare",
+				"subtext": "The driver smiled politely and pointed at the meter. Your tones missed completely."
+			}
+		}
+	}
+}

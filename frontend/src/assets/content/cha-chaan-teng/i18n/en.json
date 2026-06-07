@@ -1,0 +1,24 @@
+{
+	"chapter": {
+		"chaChaanTeng": {
+			"title": "Chapter 2: The Cha Chaan Teng Battle",
+			"description": "Navigate a high-velocity local diner and place orders like a local."
+		}
+	},
+	"feedback": {
+		"chaChaanTeng": {
+			"success": {
+				"headline": "Instant Order Accepted!",
+				"subtext": "The waiter scribbled your order without looking up and shouted it to the kitchen."
+			},
+			"warning": {
+				"headline": "The Point-and-Hope",
+				"subtext": "The waiter paused, tilted their head, then pointed at the menu board to confirm."
+			},
+			"danger": {
+				"headline": "Menu Board Pointing",
+				"subtext": "The waiter sighed and gestured at the laminated English menu."
+			}
+		}
+	}
+}

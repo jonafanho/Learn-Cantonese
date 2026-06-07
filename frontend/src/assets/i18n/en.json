@@ -1,2 +1,43 @@
 {
+	"app": {
+		"name": "Canto Survival",
+		"tagline": "Speak Cantonese. Survive Hong Kong."
+	},
+	"nav": {
+		"home": "Home",
+		"chapters": "Chapters",
+		"settings": "Settings"
+	},
+	"home": {
+		"welcome": "Welcome to Canto Survival",
+		"subtitle": "Your 2-month Cantonese survival quest starts here.",
+		"startJourney": "Start Journey",
+		"continueJourney": "Continue Journey"
+	},
+	"session": {
+		"revealAnswer": "Reveal Answer",
+		"nextCard": "Next Card",
+		"playAudio": "Play Audio",
+		"tracePrompt": "Trace the tone contour",
+		"retryTrace": "Retry Trace",
+		"sectionComplete": "Section Complete!",
+		"backToChapters": "Back to Chapters",
+		"progress": "Progress",
+		"mastery": "Mastery"
+	},
+	"settings": {
+		"title": "Settings",
+		"darkMode": "Dark Mode",
+		"language": "Language",
+		"exportProgress": "Export Progress",
+		"importProgress": "Import Progress",
+		"about": "About",
+		"version": "Version"
+	},
+	"chapters": {
+		"title": "Quest Chapters",
+		"locked": "Locked",
+		"inProgress": "In Progress",
+		"completed": "Completed"
+	}
 }

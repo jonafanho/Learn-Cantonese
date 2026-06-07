@@ -1,58 +1,65 @@
 # Implementation Plan
 
-This checklist is ordered to match the intended build sequence.
+This checklist is ordered to match the intended build sequence. Items marked with [x] are complete.
 
 ## Phase 1: Environment provisioning
 
-- [ ] Scaffold Angular workspace and Ionic integration.
-- [ ] Install Capacitor core and CLI.
-- [ ] Add Capacitor Android and iOS platforms.
-- [ ] Add `@capacitor/preferences` plugin.
-- [ ] Configure linting with `@angular-eslint/eslint-plugin`.
-- [ ] Add transloco package and base locale assets.
-- [ ] Register global styles, including visual tone font declarations.
+- [x] Scaffold Angular workspace and Ionic integration
+- [x] Install Capacitor core and CLI
+- [x] Add `@capacitor/preferences` plugin
+- [x] Configure linting with `angular-eslint`
+- [x] Add `@jsverse/transloco` package and base locale assets
+- [x] Register global styles (minimal — Ionic handles layout)
+- [x] Set up Ionic dark mode via `ion-palette-dark` class
 
 ## Phase 2: Data and asset integration
 
-- [ ] Create `src/assets/content/content-pack.json`.
-- [ ] Add starter assets under `src/assets/audio/` and `src/assets/images/`.
-- [ ] Add schema validation utility for content load.
-- [ ] Seed i18n files for interface copy.
+- [x] Create `assets/content/manifest.json` — pack discovery
+- [x] Create pack directories for all 3 chapters
+- [x] Create per-pack `pack.json` with sections, cards, feedback profiles
+- [x] Create per-pack `i18n/en.json` with chapter-specific translations
+- [x] Create app-level `assets/i18n/en.json` with UI strings
+- [x] Implement custom Transloco loader that deep-merges pack translations
 
 ## Phase 3: Core service fabrication
 
-- [ ] Implement `ContentService` for immutable content access.
-- [ ] Implement `ProgressService` with preferences persistence.
-- [ ] Implement export/import handlers for user profile JSON.
-- [ ] Implement `AudioService` playback lifecycle management.
+- [x] Implement `ContentService` — loads manifest + individual packs, caches results
+- [x] Implement `ProgressService` — preferences persistence with export/import
+- [x] Implement `AudioService` — playback lifecycle management
+- [x] Implement `FeedbackService` — data-driven social feedback lookup
+- [x] Create `tone-validation.utility.ts` — pure validation functions and tone thresholds
+- [x] Create `deep-merge.utility.ts` — deep merge for i18n merging
 
 ## Phase 4: Component engineering
 
-- [ ] Build session card reveal component.
-- [ ] Build anxiety meter component.
-- [ ] Build canvas trace component with normalized coordinate math.
-- [ ] Add tone validation utility with unit tests.
+- [ ] Build session card reveal component
+- [ ] Build anxiety meter component
+- [ ] Build canvas trace component with normalised coordinate math
+- [ ] Build chapter selection page
+- [x] Build settings page with dark mode toggle, export, import
 
 ## Phase 5: Gameplay compilation
 
-- [ ] Wire session page flow across card reveal, audio, trace, and feedback.
-- [ ] Update mastery state based on answer and trace outcomes.
-- [ ] Unlock sections/acts from mastery thresholds.
-- [ ] Add lightweight onboarding and chapter navigation.
+- [ ] Wire session page flow across card reveal, audio, trace, and feedback
+- [ ] Update mastery state based on answer and trace outcomes
+- [ ] Unlock chapters/sections from mastery thresholds
+- [ ] Add chapter navigation and progress display
 
 ## Phase 6: Hardening and release prep
 
-- [ ] Add integration tests for progress persistence and session flow.
-- [ ] Run mobile QA on at least one iOS and one Android device.
-- [ ] Verify app behavior in airplane mode.
-- [ ] Validate import/export across devices.
-- [ ] Prepare pilot content for all three acts.
+- [ ] Add unit tests for tone validation, feedback mapping, progress import
+- [ ] Add integration tests for progress persistence and session flow
+- [ ] Run mobile QA on at least one iOS and one Android device
+- [ ] Verify app behaviour in aeroplane mode
+- [ ] Validate import/export across devices
+- [ ] Prepare pilot content for all three chapters
 
 ## Acceptance criteria for MVP
 
-- User can complete at least one section in each act fully offline.
-- Audio playback and tone tracing are responsive on target devices.
-- Progress survives app restarts and can be exported/imported.
-- Social feedback updates correctly with mastery changes.
-- No blocking errors from lint or TypeScript checks.
-
+- [ ] User can complete at least one section in each chapter fully offline
+- [ ] Audio playback and tone tracing are responsive on target devices
+- [ ] Progress survives app restarts and can be exported/imported
+- [ ] Social feedback updates correctly with mastery changes
+- [ ] No blocking errors from lint or TypeScript checks
+- [ ] Dark mode respects system preference with manual override
+- [ ] All user-facing text is driven by transloco keys from merged i18n files

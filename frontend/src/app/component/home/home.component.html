@@ -1,0 +1,17 @@
+<ion-app>
+	<ion-header>
+		<ion-toolbar>
+			<ion-title>{{ "app.name" | transloco }}</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content class="ion-padding">
+		<div class="ion-text-center ion-margin-top">
+			<h1>{{ "home.welcome" | transloco }}</h1>
+			<p class="ion-text-secondary">{{ "home.subtitle" | transloco }}</p>
+		</div>
+		<div class="ion-padding">
+			<ion-button expand="block" routerLink="/chapters">{{ "nav.chapters" | transloco }}</ion-button>
+			<ion-button expand="block" fill="outline" routerLink="/settings" class="ion-margin-top">{{ "nav.settings" | transloco }}</ion-button>
+		</div>
+	</ion-content>
+</ion-app>

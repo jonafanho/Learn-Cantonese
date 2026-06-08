@@ -6,24 +6,50 @@
 	"nav": {
 		"home": "Home",
 		"chapters": "Chapters",
+		"review": "Review",
 		"settings": "Settings"
 	},
 	"home": {
 		"welcome": "Welcome to Canto Survival",
 		"subtitle": "Your 2-month Cantonese survival quest starts here.",
 		"startJourney": "Start Journey",
-		"continueJourney": "Continue Journey"
+		"continueJourney": "Continue Journey",
+		"reviewLearned": "Review Learned Words"
+	},
+	"sections": {
+		"title": "Sections",
+		"start": "Start",
+		"completed": "Completed"
 	},
 	"session": {
+		"title": "Session",
 		"revealAnswer": "Reveal Answer",
 		"nextCard": "Next Card",
 		"playAudio": "Play Audio",
 		"tracePrompt": "Trace the tone contour",
 		"retryTrace": "Retry Trace",
 		"sectionComplete": "Section Complete!",
-		"backToChapters": "Back to Chapters",
+		"backToSections": "Back to Sections",
 		"progress": "Progress",
 		"mastery": "Mastery"
+	},
+	"audioPlayback": {
+		"play": "Play pronunciation",
+		"playing": "Playing..."
+	},
+	"toneTracing": {
+		"traceHere": "Trace here",
+		"correctTrace": "Correct tone!",
+		"incorrectTrace": "Try again",
+		"retry": "Retry"
+	},
+	"review": {
+		"title": "Review",
+		"subtitle": "Words and phrases you've learned",
+		"empty": "No words reviewed yet. Complete a section to start building your vocabulary.",
+		"allChapters": "All Chapters",
+		"masteryLevel": "Mastery",
+		"lastReviewed": "Last reviewed"
 	},
 	"settings": {
 		"title": "Settings",

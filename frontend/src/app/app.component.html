@@ -1,1 +1,34 @@
-<router-outlet/>
+<ion-app>
+	<ion-menu contentId="main-content" side="start">
+		<ion-header>
+			<ion-toolbar>
+				<ion-title>{{ "app.name" | transloco }}</ion-title>
+			</ion-toolbar>
+		</ion-header>
+		<ion-content>
+			<ion-list>
+				<ion-menu-toggle>
+					<ion-item routerLink="/">
+						<ion-label>{{ "nav.home" | transloco }}</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item routerLink="/chapters">
+						<ion-label>{{ "nav.chapters" | transloco }}</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item routerLink="/review">
+						<ion-label>{{ "nav.review" | transloco }}</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item routerLink="/settings">
+						<ion-label>{{ "nav.settings" | transloco }}</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+			</ion-list>
+		</ion-content>
+	</ion-menu>
+	<ion-router-outlet id="main-content"/>
+</ion-app>

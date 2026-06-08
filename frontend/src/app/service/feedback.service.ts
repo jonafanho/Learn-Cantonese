@@ -2,8 +2,8 @@ import {inject, Injectable} from "@angular/core";
 
 import {Observable} from "rxjs";
 
-import {SocialFeedbackProfile, SocialFeedbackTier} from "../model/content-pack.model";
 import {ContentService} from "./content.service";
+import {SocialFeedbackProfile, SocialFeedbackTier} from "../model/content-pack.model";
 
 @Injectable({providedIn: "root"})
 export class FeedbackService {
@@ -15,11 +15,13 @@ export class FeedbackService {
 
 	getMatchingTier(tiers: SocialFeedbackTier[], level: number): SocialFeedbackTier | null {
 		const sorted = [...tiers].sort((a, b) => b.minLevel - a.minLevel);
+
 		for (const tier of sorted) {
 			if (level >= tier.minLevel) {
 				return tier;
 			}
 		}
+
 		return sorted.length > 0 ? sorted[sorted.length - 1] : null;
 	}
 }

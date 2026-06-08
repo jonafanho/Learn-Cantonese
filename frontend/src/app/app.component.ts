@@ -1,10 +1,25 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
-import {RouterOutlet} from "@angular/router";
+import {RouterLink} from "@angular/router";
+
+import {IonApp, IonContent, IonHeader, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonRouterOutlet, IonTitle, IonToolbar} from "@ionic/angular/standalone";
+import {TranslocoPipe} from "@jsverse/transloco";
 
 @Component({
 	selector: "app-root",
 	imports: [
-		RouterOutlet,
+		IonApp,
+		IonContent,
+		IonHeader,
+		IonItem,
+		IonLabel,
+		IonList,
+		IonMenu,
+		IonMenuToggle,
+		IonRouterOutlet,
+		IonTitle,
+		IonToolbar,
+		RouterLink,
+		TranslocoPipe,
 	],
 	templateUrl: "./app.component.html",
 	styleUrl: "./app.component.scss",

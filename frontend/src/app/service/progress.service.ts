@@ -11,9 +11,11 @@ const CURRENT_VERSION = "1.0.0";
 export class ProgressService {
 	private async getProgress(): Promise<UserProgress> {
 		const {value} = await Preferences.get({key: PROGRESS_KEY});
+
 		if (!value) {
 			return this.createDefaultProgress();
 		}
+
 		try {
 			return JSON.parse(value) as UserProgress;
 		} catch {
@@ -44,11 +46,13 @@ export class ProgressService {
 
 	async getStorylineProgress(): Promise<StorylineProgress> {
 		const progress = await this.getProgress();
+
 		return progress.storylineProgress;
 	}
 
 	async getMastery(cardId: string): Promise<MasteryEntry | null> {
 		const progress = await this.getProgress();
+
 		return progress.wordMastery[cardId] ?? null;
 	}
 
@@ -67,6 +71,7 @@ export class ProgressService {
 			entry.consecutiveCorrectAnswers = 0;
 			entry.level = Math.max(0, entry.level - 0.05);
 		}
+
 		entry.lastReviewedTimestamp = new Date().toISOString();
 		progress.wordMastery[cardId] = entry;
 		await this.saveProgress(progress);
@@ -74,6 +79,7 @@ export class ProgressService {
 
 	async completeSection(sectionId: string): Promise<void> {
 		const progress = await this.getProgress();
+
 		if (!progress.storylineProgress.completedSectionIds.includes(sectionId)) {
 			progress.storylineProgress.completedSectionIds.push(sectionId);
 			await this.saveProgress(progress);
@@ -82,6 +88,7 @@ export class ProgressService {
 
 	async unlockChapter(chapterId: string): Promise<void> {
 		const progress = await this.getProgress();
+
 		if (!progress.storylineProgress.unlockedChapterIds.includes(chapterId)) {
 			progress.storylineProgress.unlockedChapterIds.push(chapterId);
 			await this.saveProgress(progress);
@@ -90,19 +97,24 @@ export class ProgressService {
 
 	async exportUserProfile(): Promise<string> {
 		const progress = await this.getProgress();
+
 		return JSON.stringify(progress, null, 2);
 	}
 
 	async importUserProfile(fileRawText: string): Promise<boolean> {
 		try {
 			const parsed = JSON.parse(fileRawText);
+
 			if (!parsed.meta?.version || !parsed.storylineProgress || !parsed.wordMastery) {
 				return false;
 			}
+
 			for (const entry of Object.values(parsed.wordMastery as Record<string, MasteryEntry>)) {
 				entry.level = Math.max(0, Math.min(1, entry.level));
 			}
+
 			await Preferences.set({key: PROGRESS_KEY, value: JSON.stringify(parsed)});
+
 			return true;
 		} catch {
 			return false;

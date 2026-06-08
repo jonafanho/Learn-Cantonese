@@ -27,8 +27,10 @@ export class ContentService {
 			const pack$ = this.httpClient.get<Pack>(`${CONTENT_ROOT}/${packId}/pack.json`).pipe(
 				shareReplay(1),
 			);
+
 			this.packCache.set(packId, pack$);
 		}
+
 		return this.packCache.get(packId)!;
 	}
 

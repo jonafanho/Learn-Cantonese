@@ -6,10 +6,11 @@ export class AudioService {
 
 	playTrack(assetPath: string): void {
 		this.stopActiveTracks();
+
 		const audio = new Audio(assetPath);
 		audio.preload = "auto";
 		audio.play().catch(() => {
-			// Audio play may be rejected if no user interaction
+			// Audio play may be rejected without user interaction
 		});
 		this.activeTracks.push(audio);
 		audio.addEventListener("ended", () => this.removeTrack(audio));
@@ -20,11 +21,13 @@ export class AudioService {
 			track.pause();
 			track.currentTime = 0;
 		}
+
 		this.activeTracks = [];
 	}
 
 	private removeTrack(audio: HTMLAudioElement): void {
 		const index = this.activeTracks.indexOf(audio);
+
 		if (index > -1) {
 			this.activeTracks.splice(index, 1);
 		}

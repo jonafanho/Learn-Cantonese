@@ -1,0 +1,13 @@
+<ion-list [inset]="true">
+	@for (item of items() ?? []; track $index) {
+		<ion-item [routerLink]="item.routerLink" [detail]="true">
+			<div slot="start">{{ $index + 1 }}</div>
+			<ion-label>
+				{{ item.titleKey | transloco }}
+				@if (item.descriptionKey) {
+					<p>{{ item.descriptionKey | transloco }}</p>
+				}
+			</ion-label>
+		</ion-item>
+	}
+</ion-list>

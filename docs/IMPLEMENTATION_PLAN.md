@@ -32,18 +32,23 @@ This checklist is ordered to match the intended build sequence. Items marked wit
 
 ## Phase 4: Component engineering
 
-- [ ] Build session card reveal component
-- [ ] Build anxiety meter component
-- [ ] Build canvas trace component with normalised coordinate math
-- [ ] Build chapter selection page
 - [x] Build settings page with dark mode toggle, export, import
+
+## Phase 4.5: Navigation, reusable components, and new screens
+
+- [ ] Add shared hamburger menu (`ion-menu`) to root `app.component` — visible on every screen
+- [ ] Build reusable `AudioPlaybackComponent` — play button + jyutping display, inputs: `jyutping`, `audioSrc`
+- [ ] Build reusable `ToneTracingComponent` — HTML5 Canvas with normalised coordinate math, inputs: `toneSequence`, outputs: `toneComplete`
+- [ ] Build `SectionsComponent` — list of sections within a chapter (route: `/chapters/:packId/sections`)
+- [ ] Build `SessionComponent` — full card review loop: prompt reveal → audio playback → tone tracing → feedback → next card
+- [ ] Build `ReviewComponent` — learned words/phrases screen with mastery stats (route: `/review`)
 
 ## Phase 5: Gameplay compilation
 
-- [ ] Wire session page flow across card reveal, audio, trace, and feedback
+- [ ] Wire section navigation: chapters → sections → session → back to sections on complete
 - [ ] Update mastery state based on answer and trace outcomes
 - [ ] Unlock chapters/sections from mastery thresholds
-- [ ] Add chapter navigation and progress display
+- [ ] Populate review screen from mastered `wordMastery` entries in progress
 
 ## Phase 6: Hardening and release prep
 

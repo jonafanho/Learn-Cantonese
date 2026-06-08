@@ -1,17 +1,18 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
+
 import {TranslocoPipe} from "@jsverse/transloco";
 
 import {PageLayoutComponent} from "../page-layout/page-layout.component";
 
 @Component({
-	selector: "app-home",
+	selector: "app-review",
 	imports: [
 		PageLayoutComponent,
 		TranslocoPipe,
 	],
-	templateUrl: "./home.component.html",
-	styleUrl: "./home.component.scss",
+	templateUrl: "./review.component.html",
+	styleUrl: "./review.component.scss",
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {
+export class ReviewComponent {
 }

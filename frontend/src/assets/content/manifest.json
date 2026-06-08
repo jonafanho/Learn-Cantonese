@@ -1,5 +1,7 @@
-[
-	"hkia",
-	"cha-chaan-teng",
-	"wet-market"
-]
+{
+	"packs": [
+		"hkia",
+		"cha-chaan-teng",
+		"wet-market"
+	]
+}

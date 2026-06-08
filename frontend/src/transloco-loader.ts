@@ -13,8 +13,9 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 
 	getTranslation(lang: string) {
 		return this.httpClient.get<Record<string, unknown>>(`./assets/i18n/${lang}.json`).pipe(
-			switchMap(base => this.httpClient.get<string[]>("./assets/content/manifest.json").pipe(
-				switchMap(packIds => {
+			switchMap(base => this.httpClient.get<{packs: string[]}>("./assets/content/manifest.json").pipe(
+				switchMap(manifest => {
+					const packIds = manifest.packs;
 					if (packIds.length === 0) {
 						return of(base);
 					} else {

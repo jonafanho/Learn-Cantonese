@@ -35,8 +35,14 @@ The app is a client-only mobile web application packaged as a native app shell v
 frontend/src/app/
 ├── component/               # UI components (Ionic-based)
 │   ├── home/                # Home screen with navigation to chapters and settings
-│   ├── chapters/            # Chapter selection list
-│   └── settings/            # Settings (theme, language, export, import)
+│   ├── chapters/            # Chapter selection list (shows available packs)
+│   ├── sections/            # Section list for a selected chapter
+│   ├── session/             # Card review session (card reveal, audio, trace, feedback)
+│   ├── review/              # Learned words review — all mastered cards across chapters
+│   ├── settings/            # Settings (theme, language, export, import)
+│   ├── audio-playback/      # Reusable: plays audio + displays jyutping for a card
+│   ├── tone-tracing/        # Reusable: HTML5 Canvas for tone contour tracing
+│   └── page-layout/         # Reusable: toolbar+menu shell, projects content via ng-content
 ├── model/
 │   ├── content-pack.model.ts # PackManifest, Pack, Section, Flashcard, SocialFeedbackProfile, SocialFeedbackTier
 │   └── progress.model.ts     # UserProgress, MasteryEntry, StorylineProgress
@@ -49,8 +55,8 @@ frontend/src/app/
 ├── utility/
 │   ├── tone-validation.utility.ts  # Pure functions for canvas tone evaluation
 │   └── deep-merge.utility.ts       # Deep object merge for i18n translation merging
-├── app.routes.ts             # Route definitions (home, chapters, settings)
-├── app.component.ts|html|scss # Root component with router-outlet
+├── app.routes.ts             # Route definitions (home, chapters, sections, session, review, settings)
+├── app.component.ts|html|scss # Root component — IonMenu wrapper + router-outlet
 └── app.config.ts             # Application-wide providers (Ionic, Transloco, HttpClient, Router, SettingsService initializer)
 ```
 
@@ -159,17 +165,75 @@ Session page
 
 ## 8. Routing
 
-The app uses Angular's standalone router with three top-level routes:
+The app uses Angular's standalone router with six top-level routes:
 
-| Path         | Component          | Description                    |
-|--------------|--------------------|--------------------------------|
-| `/`          | `HomeComponent`    | Welcome screen, nav buttons    |
-| `/chapters`  | `ChaptersComponent`| Chapter selection list         |
-| `/settings`  | `SettingsComponent`| Theme, language, export/import |
+| Path                                   | Component            | Description                          |
+|----------------------------------------|----------------------|--------------------------------------|
+| `/`                                    | `HomeComponent`      | Welcome screen, nav buttons          |
+| `/chapters`                            | `ChaptersComponent`  | Chapter/pack selection list          |
+| `/chapters/:packId/sections`           | `SectionsComponent`  | Section list for the selected pack   |
+| `/chapters/:packId/sections/:sectionId`| `SessionComponent`   | Card review session                  |
+| `/review`                              | `ReviewComponent`    | All learned words with mastery stats |
+| `/settings`                            | `SettingsComponent`  | Theme, language, export/import       |
 
 Routes are defined in `app.routes.ts` and registered via `provideRouter(routes)` in `app.config.ts`.
 
-## 9. Dark mode
+## 9. Shared navigation (hamburger menu)
+
+Every screen includes an Ionic `ion-menu` slide-out drawer accessible via a hamburger icon in the toolbar. The menu provides fast navigation to:
+
+- **Home** (`/`)
+- **Chapters** (`/chapters`)
+- **Review** (`/review`) — learned words and mastery
+- **Settings** (`/settings`)
+
+The menu is implemented once in `app.component.html` and wraps the `router-outlet` inside an `ion-router-outlet` with matching `contentId`. Each page component adds an `ion-menu-toggle` button in its toolbar to open the menu.
+
+This avoids duplicating navigation controls across every page and keeps the app feeling native on mobile.
+
+## 10. Reusable components
+
+### AudioPlaybackComponent
+
+- **Selector:** `app-audio-playback`
+- **Inputs:**
+  - `jyutping: string` — the jyutping romanization to display
+  - `audioSrc: string` — resolved asset path to the audio file
+  - `labelKey: string` — optional transloco key for assistive text (e.g. "tap to play")
+- **Outputs:** none (side-effect only — plays audio via `AudioService`)
+- **Purpose:** Standardises the audio playback UI across session and review screens. Shows a play button alongside the jyutping; tapping it stops any active track and plays the new one.
+
+### ToneTracingComponent
+
+- **Selector:** `app-tone-tracing`
+- **Inputs:**
+  - `toneSequence: number[]` — the target tone sequence (e.g. `[4, 1, 4, 1, 4]`)
+  - `disabled: boolean` — lock the canvas while feedback is shown
+- **Outputs:**
+  - `toneComplete: EventEmitter<boolean>` — emits `true` if all tones in the sequence were traced correctly, `false` otherwise
+- **Purpose:** Provides the HTML5 Canvas drawing surface for tone contour tracing. Uses `normalizeCoordinate`, `validateTone`, and `isStrokeLongEnough` from `tone-validation.utility.ts`. Renders visual tone-zone guides on the canvas and evaluates each stroke against the target tone thresholds.
+
+### PageLayoutComponent
+
+- **Selector:** `app-page-layout`
+- **Inputs:**
+  - `titleKey: string` (required) — transloco key for the toolbar title
+- **Purpose:** Eliminates the repetitive `ion-app` + `ion-header` + menu button boilerplate that every page was duplicating. Wraps a page's content area with `<ion-app><ion-header><ion-toolbar><ion-buttons slot="start"><ion-menu-button/>` and the title. Page-specific content is projected via `<ng-content>` into `ion-content`. All six page components use this wrapper, removing ~6 lines of template and 6+ imports per page.
+
+## 11. Screen flow
+
+```
+Home
+ ├── Chapters
+ │    └── Sections (per chapter)
+ │         └── Session (card review)
+ ├── Review
+ └── Settings
+```
+
+Navigation is routed through Angular Router. The hamburger menu provides backstop access to the four main screens from anywhere in the app.
+
+## 12. Dark mode
 
 Dark mode uses **Ionic's built-in palette system**, not custom CSS variables:
 
@@ -180,7 +244,7 @@ Dark mode uses **Ionic's built-in palette system**, not custom CSS variables:
 
 No custom CSS variables or media query overrides are needed — Ionic handles it.
 
-## 10. Testing strategy
+## 13. Testing strategy
 
 - Unit test pure logic: tone validation, feedback mapping, import parsing
 - Unit test services with plugin mocks

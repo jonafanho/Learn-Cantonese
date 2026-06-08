@@ -3,8 +3,8 @@ import {effect, inject, Injectable, signal} from "@angular/core";
 import {Preferences} from "@capacitor/preferences";
 import {TranslocoService} from "@jsverse/transloco";
 
-const darkModeKey = "dark_mode";
-const languageKey = "language";
+const DARK_MODE_KEY = "dark_mode";
+const LANGUAGE_KEY = "language";
 
 @Injectable({providedIn: "root"})
 export class SettingsService {
@@ -13,33 +13,33 @@ export class SettingsService {
 	readonly darkMode = signal(false);
 	readonly language = signal("en");
 
-	async init() {
-		const [darkMode, language] = await Promise.all([
-			Preferences.get({key: darkModeKey}),
-			Preferences.get({key: languageKey}),
-		]);
-
-		if (darkMode.value === null) {
-			this.darkMode.set(window.matchMedia("(prefers-color-scheme: dark)").matches);
-		} else {
-			this.darkMode.set(darkMode.value === "true");
-		}
-
-		if (language.value !== null) {
-			this.language.set(language.value);
-		}
-	}
-
 	constructor() {
 		effect(() => {
 			document.documentElement.classList.toggle("ion-palette-dark", this.darkMode());
-			void Preferences.set({key: darkModeKey, value: String(this.darkMode())});
+			void Preferences.set({key: DARK_MODE_KEY, value: String(this.darkMode())});
 		});
 
 		effect(() => {
 			this.translocoService.setActiveLang(this.language());
-			void Preferences.set({key: languageKey, value: this.language()});
+			void Preferences.set({key: LANGUAGE_KEY, value: this.language()});
 		});
+	}
+
+	async init(): Promise<void> {
+		const [storedDarkMode, storedLanguage] = await Promise.all([
+			Preferences.get({key: DARK_MODE_KEY}),
+			Preferences.get({key: LANGUAGE_KEY}),
+		]);
+
+		if (storedDarkMode.value === null) {
+			this.darkMode.set(window.matchMedia("(prefers-color-scheme: dark)").matches);
+		} else {
+			this.darkMode.set(storedDarkMode.value === "true");
+		}
+
+		if (storedLanguage.value !== null) {
+			this.language.set(storedLanguage.value);
+		}
 	}
 }
 

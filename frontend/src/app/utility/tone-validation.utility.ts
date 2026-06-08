@@ -6,9 +6,11 @@ export interface ToneThreshold {
 
 function safeSlope(xStart: number, yStart: number, xEnd: number, yEnd: number): number {
 	const dx = xEnd - xStart;
+
 	if (dx === 0) {
 		return yEnd > yStart ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
 	}
+
 	return (yEnd - yStart) / dx;
 }
 
@@ -54,6 +56,7 @@ export function isStrokeLongEnough(
 ): boolean {
 	const dx = xEnd - xStart;
 	const dy = yEnd - yStart;
+
 	return Math.sqrt(dx * dx + dy * dy) >= minDistance;
 }
 
@@ -63,8 +66,10 @@ export function validateTone(
 	thresholds: ToneThreshold[] = TONE_THRESHOLDS,
 ): boolean {
 	const threshold = thresholds.find(t => t.tone === targetTone);
+
 	if (!threshold) {
 		return false;
 	}
+
 	return threshold.validate(xStart, yStart, xEnd, yEnd);
 }

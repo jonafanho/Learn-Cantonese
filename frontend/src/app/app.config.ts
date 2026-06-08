@@ -5,9 +5,9 @@ import {provideRouter} from "@angular/router";
 import {provideIonicAngular} from "@ionic/angular/standalone";
 import {provideTransloco} from "@jsverse/transloco";
 
-import {TranslocoHttpLoader} from "../transloco-loader";
 import {routes} from "./app.routes";
 import {SettingsService} from "./service/settings.service";
+import {TranslocoHttpLoader} from "../transloco-loader";
 
 export const appConfig: ApplicationConfig = {
 	providers: [

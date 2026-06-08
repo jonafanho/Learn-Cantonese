@@ -1,0 +1,17 @@
+<ion-app>
+	<ion-header>
+		<ion-toolbar>
+			<ion-buttons slot="start">
+				@if (backHref(); as backHref) {
+					<ion-back-button [defaultHref]="backHref"/>
+				} @else {
+					<ion-menu-button/>
+				}
+			</ion-buttons>
+			<ion-title>{{ titleKey() | transloco }}</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	<ion-content color="light">
+		<ng-content/>
+	</ion-content>
+</ion-app>

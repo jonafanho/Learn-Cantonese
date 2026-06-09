@@ -1,0 +1,8 @@
+<div class="ion-text-center">
+	<h1 class="ion-margin-bottom">{{ characterKey() | transloco }}</h1>
+	<app-audio-playback [jyutping]="romanizationVisualFonts()" [audioSrc]="resolveAudioSrc()"/>
+	<p class="ion-text-secondary ion-margin-top">{{ translationKey() | transloco }}</p>
+	@if (toneSequence()) {
+		<app-tone-tracing [toneSequence]="toneSequence()!" (toneComplete)="toneComplete.emit(true)"/>
+	}
+</div>

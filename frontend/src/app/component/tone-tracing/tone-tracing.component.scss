@@ -1,14 +1,8 @@
-.tone-canvas-wrapper {
-	display: flex;
-	justify-content: center;
-	padding: 1rem;
-}
-
 .tone-canvas {
 	width: 100%;
-	max-width: 300px;
+	max-width: 32rem;
 	aspect-ratio: 1 / 1;
 	border: 1px solid var(--ion-color-medium);
-	border-radius: 8px;
+	border-radius: 1rem;
 	touch-action: none;
 }

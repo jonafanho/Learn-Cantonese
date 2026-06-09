@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, input} from "@angular/core";
+import {ChangeDetectionStrategy, Component, input, output} from "@angular/core";
 
-import {IonApp, IonBackButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar} from "@ionic/angular/standalone";
+import {IonApp, IonBackButton, IonButton, IonButtons, IonContent, IonFooter, IonHeader, IonMenuButton, IonTitle, IonToolbar} from "@ionic/angular/standalone";
 import {TranslocoPipe} from "@jsverse/transloco";
 
 @Component({
@@ -8,8 +8,10 @@ import {TranslocoPipe} from "@jsverse/transloco";
 	imports: [
 		IonApp,
 		IonBackButton,
+		IonButton,
 		IonButtons,
 		IonContent,
+		IonFooter,
 		IonHeader,
 		IonMenuButton,
 		IonTitle,
@@ -22,5 +24,10 @@ import {TranslocoPipe} from "@jsverse/transloco";
 })
 export class PageLayoutComponent {
 	readonly titleKey = input.required<string>();
-	readonly backHref = input<string | undefined>(undefined);
+	readonly backHref = input<string>();
+	readonly previousButtonEnabled = input<boolean>();
+	readonly nextButtonEnabled = input<boolean>();
+	readonly clickPrevious = output();
+	readonly clickNext = output();
+	readonly nextButtonLabelKey = input("page.next");
 }

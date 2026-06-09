@@ -5,52 +5,201 @@
 	"titleKey": "chapter.hkia.title",
 	"descriptionKey": "chapter.hkia.description",
 	"feedbackProfiles": {
-		"feedback_profile_taxi": {
-			"id": "feedback_profile_taxi",
+		"feedback_profile_arrival": {
+			"id": "feedback_profile_arrival",
 			"tiers": [
 				{
 					"minLevel": 0.8,
 					"meterColor": "success",
-					"headlineKey": "feedback.taxi.success.headline",
-					"subtextKey": "feedback.taxi.success.subtext"
+					"headlineKey": "feedback.hkia.arrival.success.headline",
+					"subtextKey": "feedback.hkia.arrival.success.subtext"
 				},
 				{
 					"minLevel": 0.4,
 					"meterColor": "warning",
-					"headlineKey": "feedback.taxi.warning.headline",
-					"subtextKey": "feedback.taxi.warning.subtext"
+					"headlineKey": "feedback.hkia.arrival.warning.headline",
+					"subtextKey": "feedback.hkia.arrival.warning.subtext"
 				},
 				{
 					"minLevel": 0,
 					"meterColor": "danger",
-					"headlineKey": "feedback.taxi.danger.headline",
-					"subtextKey": "feedback.taxi.danger.subtext"
+					"headlineKey": "feedback.hkia.arrival.danger.headline",
+					"subtextKey": "feedback.hkia.arrival.danger.subtext"
 				}
 			]
 		}
 	},
 	"sections": [
 		{
-			"id": "section_01_taxi",
-			"titleKey": "chapter.hkia.section_01_taxi.title",
-			"descriptionKey": "chapter.hkia.section_01_taxi.description",
-			"feedbackProfileId": "feedback_profile_taxi",
-			"cards": [
+			"id": "section_01_arrival",
+			"titleKey": "chapter.hkia.section_01_arrival.title",
+			"descriptionKey": "chapter.hkia.section_01_arrival.description",
+			"feedbackProfileId": "feedback_profile_arrival",
+			"steps": [
 				{
-					"id": "card_taxi_001",
-					"promptKey": "chapter.hkia.card_taxi_001.prompt",
-					"translationKey": "chapter.hkia.card_taxi_001.translation",
-					"contextualHintKey": "chapter.hkia.card_taxi_001.contextualHint",
-					"romanizationVisualFonts": "m4_goi1_maai4_bin1_ting4",
-					"audioAssetPath": "audio/m4goi_maaibin_ting4.mp3",
-					"imageAssetPath": "images/pull-over.svg",
-					"toneSequence": [
-						4,
-						1,
-						4,
-						1,
-						4
-					]
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_waking_up"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_hoeng1_gong2",
+					"characterKey": "chapter.hkia.card_hoeng1_gong2.character",
+					"romanizationVisualFonts": "hoeng1 gong2",
+					"audioAssetPath": "audio/hoeng1_gong2.mp3",
+					"translationKey": "chapter.hkia.card_hoeng1_gong2.translation",
+					"toneSequence": [1, 2]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_plane_lands"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_m4_goi1",
+					"characterKey": "chapter.hkia.card_m4_goi1.character",
+					"romanizationVisualFonts": "m4 goi1",
+					"audioAssetPath": "audio/m4_goi1.mp3",
+					"translationKey": "chapter.hkia.card_m4_goi1.translation",
+					"contextualHintKey": "chapter.hkia.card_m4_goi1.contextualHint",
+					"toneSequence": [4, 1]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_flight_attendants"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_do1_ze6",
+					"characterKey": "chapter.hkia.card_do1_ze6.character",
+					"romanizationVisualFonts": "do1 ze6",
+					"audioAssetPath": "audio/do1_ze6.mp3",
+					"translationKey": "chapter.hkia.card_do1_ze6.translation",
+					"contextualHintKey": "chapter.hkia.card_do1_ze6.contextualHint",
+					"toneSequence": [1, 6]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_asking_toilet"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_sai2_sau2_gaan1",
+					"characterKey": "chapter.hkia.card_sai2_sau2_gaan1.character",
+					"romanizationVisualFonts": "sai2 sau2 gaan1",
+					"audioAssetPath": "audio/sai2_sau2_gaan1.mp3",
+					"translationKey": "chapter.hkia.card_sai2_sau2_gaan1.translation",
+					"toneSequence": [2, 2, 1]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_hai2_bin1_aa3",
+					"characterKey": "chapter.hkia.card_hai2_bin1_aa3.character",
+					"romanizationVisualFonts": "hai2 bin1 aa3",
+					"audioAssetPath": "audio/hai2_bin1_aa3.mp3",
+					"translationKey": "chapter.hkia.card_hai2_bin1_aa3.translation",
+					"toneSequence": [2, 1, 3]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_directions"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_zo2",
+					"characterKey": "chapter.hkia.card_zo2.character",
+					"romanizationVisualFonts": "zo2",
+					"audioAssetPath": "audio/zo2.mp3",
+					"translationKey": "chapter.hkia.card_zo2.translation",
+					"toneSequence": [2]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_jau6",
+					"characterKey": "chapter.hkia.card_jau6.character",
+					"romanizationVisualFonts": "jau6",
+					"audioAssetPath": "audio/jau6.mp3",
+					"translationKey": "chapter.hkia.card_jau6.translation",
+					"toneSequence": [6]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_baggage_claim"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_hou2",
+					"characterKey": "chapter.hkia.card_hou2.character",
+					"romanizationVisualFonts": "hou2",
+					"audioAssetPath": "audio/hou2.mp3",
+					"translationKey": "chapter.hkia.card_hou2.translation",
+					"toneSequence": [2]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_octopus_card"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_baat3_daat6_tung1",
+					"characterKey": "chapter.hkia.card_baat3_daat6_tung1.character",
+					"romanizationVisualFonts": "baat3 daat6 tung1",
+					"audioAssetPath": "audio/baat3_daat6_tung1.mp3",
+					"translationKey": "chapter.hkia.card_baat3_daat6_tung1.translation",
+					"contextualHintKey": "chapter.hkia.card_baat3_daat6_tung1.contextualHint",
+					"toneSequence": [3, 6, 1]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_two_hundred"
+				},
+				{
+					"type": "flashcard",
+					"id": "card_jat1",
+					"characterKey": "chapter.hkia.card_jat1.character",
+					"romanizationVisualFonts": "jat1",
+					"audioAssetPath": "audio/jat1.mp3",
+					"translationKey": "chapter.hkia.card_jat1.translation",
+					"toneSequence": [1]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_ji6",
+					"characterKey": "chapter.hkia.card_ji6.character",
+					"romanizationVisualFonts": "ji6",
+					"audioAssetPath": "audio/ji6.mp3",
+					"translationKey": "chapter.hkia.card_ji6.translation",
+					"toneSequence": [6]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_saam1",
+					"characterKey": "chapter.hkia.card_saam1.character",
+					"romanizationVisualFonts": "saam1",
+					"audioAssetPath": "audio/saam1.mp3",
+					"translationKey": "chapter.hkia.card_saam1.translation",
+					"toneSequence": [1]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_baak3",
+					"characterKey": "chapter.hkia.card_baak3.character",
+					"romanizationVisualFonts": "baak3",
+					"audioAssetPath": "audio/baak3.mp3",
+					"translationKey": "chapter.hkia.card_baak3.translation",
+					"toneSequence": [3]
+				},
+				{
+					"type": "flashcard",
+					"id": "card_ji6_baak3_man1",
+					"characterKey": "chapter.hkia.card_ji6_baak3_man1.character",
+					"romanizationVisualFonts": "ji6 baak3 man1",
+					"audioAssetPath": "audio/ji6_baak3_man1.mp3",
+					"translationKey": "chapter.hkia.card_ji6_baak3_man1.translation",
+					"toneSequence": [6, 3, 1]
+				},
+				{
+					"type": "narrative",
+					"narrativeKey": "chapter.hkia.section_01_arrival.narrative_walking_out"
 				}
 			]
 		}

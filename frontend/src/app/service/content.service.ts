@@ -6,13 +6,13 @@ import {map, shareReplay} from "rxjs/operators";
 
 import {Pack, PackManifest, Section, SocialFeedbackProfile} from "../model/content-pack.model";
 
-const CONTENT_ROOT = "./assets/content";
+const contentRoot = "./assets/content";
 
 @Injectable({providedIn: "root"})
 export class ContentService {
 	private readonly httpClient = inject(HttpClient);
 
-	private readonly manifest$ = this.httpClient.get<PackManifest>(`${CONTENT_ROOT}/manifest.json`).pipe(
+	private readonly manifest$ = this.httpClient.get<PackManifest>(`${contentRoot}/manifest.json`).pipe(
 		shareReplay(1),
 	);
 
@@ -24,7 +24,7 @@ export class ContentService {
 
 	getPack(packId: string): Observable<Pack> {
 		if (!this.packCache.has(packId)) {
-			const pack$ = this.httpClient.get<Pack>(`${CONTENT_ROOT}/${packId}/pack.json`).pipe(
+			const pack$ = this.httpClient.get<Pack>(`${contentRoot}/${packId}/pack.json`).pipe(
 				shareReplay(1),
 			);
 
@@ -47,6 +47,6 @@ export class ContentService {
 	}
 
 	resolveAssetPath(packId: string, relativePath: string): string {
-		return `${CONTENT_ROOT}/${packId}/${relativePath}`;
+		return `${contentRoot}/${packId}/${relativePath}`;
 	}
 }

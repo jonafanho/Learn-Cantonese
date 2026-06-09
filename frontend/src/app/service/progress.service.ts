@@ -4,13 +4,13 @@ import {Preferences} from "@capacitor/preferences";
 
 import {MasteryEntry, StorylineProgress, UserProgress} from "../model/progress.model";
 
-const PROGRESS_KEY = "user_progress";
-const CURRENT_VERSION = "1.0.0";
+const progressKey = "user_progress";
+const currentVersion = "1.0.0";
 
 @Injectable({providedIn: "root"})
 export class ProgressService {
 	private async getProgress(): Promise<UserProgress> {
-		const {value} = await Preferences.get({key: PROGRESS_KEY});
+		const {value} = await Preferences.get({key: progressKey});
 
 		if (!value) {
 			return this.createDefaultProgress();
@@ -25,13 +25,13 @@ export class ProgressService {
 
 	private async saveProgress(progress: UserProgress): Promise<void> {
 		progress.meta.lastUpdated = new Date().toISOString();
-		await Preferences.set({key: PROGRESS_KEY, value: JSON.stringify(progress)});
+		await Preferences.set({key: progressKey, value: JSON.stringify(progress)});
 	}
 
 	private createDefaultProgress(): UserProgress {
 		return {
 			meta: {
-				version: CURRENT_VERSION,
+				version: currentVersion,
 				lastUpdated: new Date().toISOString(),
 				deviceId: "local-device",
 			},
@@ -113,7 +113,7 @@ export class ProgressService {
 				entry.level = Math.max(0, Math.min(1, entry.level));
 			}
 
-			await Preferences.set({key: PROGRESS_KEY, value: JSON.stringify(parsed)});
+			await Preferences.set({key: progressKey, value: JSON.stringify(parsed)});
 
 			return true;
 		} catch {

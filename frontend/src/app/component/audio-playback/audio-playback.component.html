@@ -1,1 +1,1 @@
-<ion-button fill="clear" (click)="audioService.playTrack(audioSrc())" aria-label="Play pronunciation">{{ jyutping() }}</ion-button>
+<ion-button fill="clear" (click)="audioService.playTrack(audioSrc())" [attr.aria-label]="'audioPlayback.play' | transloco">{{ jyutping() }}</ion-button>

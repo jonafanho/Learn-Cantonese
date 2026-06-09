@@ -1,0 +1,38 @@
+<app-page-layout titleKey="page.title" [backHref]="'/chapters/' + packId + '/sections'" [previousButtonEnabled]="currentStepIndex() > 0" [nextButtonEnabled]="canClickNext()" [nextButtonLabelKey]="nextButtonLabelKey()" (clickPrevious)="previousStep()" (clickNext)="nextStep()">
+	<div class="ion-padding">
+		@if (currentSection(); as section) {
+			@if (isComplete()) {
+				<h1 class="ion-text-center ion-margin-bottom">{{ "page.sectionComplete" | transloco }}</h1>
+				<ion-list>
+					@for (step of section.steps; track $index) {
+						@if (step.type === "flashcard") {
+							<ion-item>
+								<ion-label>
+									<h2>{{ step.characterKey | transloco }}</h2>
+									<p>{{ step.romanizationVisualFonts }}</p>
+									<p>{{ step.translationKey | transloco }}</p>
+								</ion-label>
+							</ion-item>
+						}
+					}
+				</ion-list>
+				<ion-button expand="block" class="ion-margin-top" [routerLink]="['/chapters', packId, 'sections']">{{ "page.backToSections" | transloco }}</ion-button>
+			} @else {
+				@if (section.steps[currentStepIndex()]; as step) {
+					@if (step.type === "narrative") {
+						<app-narrative [narrativeKey]="step.narrativeKey"/>
+					} @else {
+						<app-card
+							[packId]="packId"
+							[characterKey]="step.characterKey"
+							[romanizationVisualFonts]="step.romanizationVisualFonts"
+							[audioAssetPath]="step.audioAssetPath"
+							[translationKey]="step.translationKey"
+							[toneSequence]="step.toneSequence"
+							(toneComplete)="onToneComplete($event)"/>
+					}
+				}
+			}
+		}
+	</div>
+</app-page-layout>

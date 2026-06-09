@@ -28,16 +28,25 @@ export interface Section {
 	titleKey: string;
 	descriptionKey: string;
 	feedbackProfileId: string;
-	cards: Flashcard[];
+	steps: SectionStep[];
 }
 
-export interface Flashcard {
+export type SectionStep = NarrativeStep | FlashcardStep;
+
+export interface NarrativeStep {
+	type: "narrative";
+	narrativeKey: string;
+	imageAssetPath?: string;
+}
+
+export interface FlashcardStep {
+	type: "flashcard";
 	id: string;
-	promptKey: string;
-	translationKey: string;
-	contextualHintKey: string;
+	characterKey: string;
 	romanizationVisualFonts: string;
 	audioAssetPath: string;
+	translationKey: string;
+	contextualHintKey?: string;
 	imageAssetPath?: string;
-	toneSequence: number[];
+	toneSequence?: number[];
 }

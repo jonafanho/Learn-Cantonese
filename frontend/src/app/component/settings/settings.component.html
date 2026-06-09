@@ -6,7 +6,7 @@
 		</ion-item>
 		<ion-item>
 			<ion-label>{{ "settings.language" | transloco }}</ion-label>
-			<ion-select slot="end" [value]="language()" (ionChange)="setLanguage($event.target)">
+			<ion-select slot="end" [value]="language()" (ionChange)="setLanguage($event)">
 				@for (language of languages; track $index) {
 					<ion-select-option [value]="language.key">{{ language.value }}</ion-select-option>
 				}

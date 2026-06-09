@@ -1,3 +1,4 @@
-<div class="tone-canvas-wrapper">
-	<canvas #toneCanvas class="tone-canvas"></canvas>
-</div>
+<canvas #toneCanvas class="tone-canvas" (pointerdown)="onPointerDown($event)" (pointermove)="onPointerMove($event)" (pointerup)="onPointerUp($event)"></canvas>
+<ion-button shape="round" fill="clear" (click)="toggleHint()" [attr.aria-label]="'toneTracing.showHint' | transloco">
+	<ion-icon slot="icon-only" name="help-circle-outline"/>
+</ion-button>

@@ -3,8 +3,8 @@ import {effect, inject, Injectable, signal} from "@angular/core";
 import {Preferences} from "@capacitor/preferences";
 import {TranslocoService} from "@jsverse/transloco";
 
-const DARK_MODE_KEY = "dark_mode";
-const LANGUAGE_KEY = "language";
+const darkModeKey = "dark_mode";
+const languageKey = "language";
 
 @Injectable({providedIn: "root"})
 export class SettingsService {
@@ -16,19 +16,19 @@ export class SettingsService {
 	constructor() {
 		effect(() => {
 			document.documentElement.classList.toggle("ion-palette-dark", this.darkMode());
-			void Preferences.set({key: DARK_MODE_KEY, value: String(this.darkMode())});
+			void Preferences.set({key: darkModeKey, value: String(this.darkMode())});
 		});
 
 		effect(() => {
 			this.translocoService.setActiveLang(this.language());
-			void Preferences.set({key: LANGUAGE_KEY, value: this.language()});
+			void Preferences.set({key: languageKey, value: this.language()});
 		});
 	}
 
 	async init(): Promise<void> {
 		const [storedDarkMode, storedLanguage] = await Promise.all([
-			Preferences.get({key: DARK_MODE_KEY}),
-			Preferences.get({key: LANGUAGE_KEY}),
+			Preferences.get({key: darkModeKey}),
+			Preferences.get({key: languageKey}),
 		]);
 
 		if (storedDarkMode.value === null) {

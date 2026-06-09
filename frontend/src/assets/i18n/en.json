@@ -21,17 +21,13 @@
 		"start": "Start",
 		"completed": "Completed"
 	},
-	"session": {
-		"title": "Session",
-		"revealAnswer": "Reveal Answer",
-		"nextCard": "Next Card",
-		"playAudio": "Play Audio",
-		"tracePrompt": "Trace the tone contour",
-		"retryTrace": "Retry Trace",
+	"page": {
+		"title": "Page",
+		"next": "Next",
+		"previous": "Previous",
+		"finish": "Finish",
 		"sectionComplete": "Section Complete!",
-		"backToSections": "Back to Sections",
-		"progress": "Progress",
-		"mastery": "Mastery"
+		"backToSections": "Back to Sections"
 	},
 	"audioPlayback": {
 		"play": "Play pronunciation",
@@ -41,7 +37,8 @@
 		"traceHere": "Trace here",
 		"correctTrace": "Correct tone!",
 		"incorrectTrace": "Try again",
-		"retry": "Retry"
+		"retry": "Retry",
+		"showHint": "Toggle hint"
 	},
 	"review": {
 		"title": "Review",

@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, input} from "@angular/core";
 
 import {IonButton} from "@ionic/angular/standalone";
+import {TranslocoPipe} from "@jsverse/transloco";
 
 import {AudioService} from "../../service/audio.service";
 
@@ -8,6 +9,7 @@ import {AudioService} from "../../service/audio.service";
 	selector: "app-audio-playback",
 	imports: [
 		IonButton,
+		TranslocoPipe,
 	],
 	templateUrl: "./audio-playback.component.html",
 	styleUrl: "./audio-playback.component.scss",

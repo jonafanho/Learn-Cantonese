@@ -36,7 +36,7 @@ export class SettingsComponent {
 		this.settingsService.darkMode.set(!this.settingsService.darkMode());
 	}
 
-	protected setLanguage(event: HTMLIonSelectElement): void {
-		this.settingsService.language.set(event.value);
+	protected setLanguage(event: CustomEvent): void {
+		this.settingsService.language.set(event.detail.value);
 	}
 }

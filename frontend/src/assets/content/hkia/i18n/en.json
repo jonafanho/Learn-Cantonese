@@ -1,32 +1,97 @@
 {
 	"chapter": {
 		"hkia": {
-			"title": "Chapter 1: Landing at HKIA",
-			"description": "Survive the airport arrival, grab an Octopus card, and catch a red urban taxi.",
-			"section_01_taxi": {
-				"title": "Hailing a Red Taxi",
-				"description": "Learn key phrases to flag down a taxi and give directions to the driver."
+			"title": "Chapter 1: Welcome to Hong Kong!",
+			"description": "Survive the airport arrival, grab an Octopus card, and find your way home.",
+			"section_01_arrival": {
+				"title": "Section 1: Landing at HKIA",
+				"description": "Arrive at Hong Kong International Airport with Kitty and learn your first Cantonese words.",
+				"narrative_waking_up": "You suddenly get jolted awake. Where am I? Oh that's right, I'm on a plane. Kitty purrs softly in the seat next to me, licking her paws after enjoying the continental breakfast served minutes ago.\n\nA friendly voice emanates from the overhead speakers, \"Welcome to Hong Kong!\"",
+				"narrative_plane_lands": "The plane lands smoothly and the cabin door pops open. \"Thank you\", pipes Kitty cheerfully. She is excited to be back on solid ground. \"I love your pretty uniform!\"",
+				"narrative_flight_attendants": "\"Thank you!\" The flight attendants wave and smile back.",
+				"narrative_asking_toilet": "Once we entered the terminal, I had to use the toilets. Seeing an airport staff member, I asked, \"where are the toilets?\"",
+				"narrative_directions": "\"Turn left, then it will be on the right\", she replied.\nI reply with a new word I learned, \"唔該!\" She gave us a faint smile.",
+				"narrative_baggage_claim": "Afterwards, I carry Kitty in my arms and hurry to the baggage claim before the queue gets too long. Our bags were already waiting for us. Good!",
+				"narrative_octopus_card": "Walking towards the exit, we arrive at the MTR Airport Express station. At the customer service centre, I ask for an Octopus card, which is a smart card used for riding public transport, buying groceries, paying for food, and more. \"Octopus card, please!\"",
+				"narrative_two_hundred": "\"Two hundred dollars\", replied the man behind the glass window.",
+				"narrative_walking_out": "I walked out with an Octopus card in my hand. Kitty is proud of me for learning some new words. \"What are all the words you learned today?\" she asked, cocking her head to the side.\n\"Hmm, let me see. It's quite a few words!\""
 			},
-			"card_taxi_001": {
-				"prompt": "m4_goi1_maai4_bin1_ting4",
-				"translation": "Excuse me, pull over on the side please.",
-				"contextualHint": "Use right before your designated destination building."
+			"card_hoeng1_gong2": {
+				"character": "香港",
+				"translation": "Hong Kong"
+			},
+			"card_m4_goi1": {
+				"character": "唔該",
+				"translation": "thank you (service context)",
+				"contextualHint": "Use 唔該 when someone performs a service for you — a waiter pours tea, a cashier rings you up, or a taxi driver stops."
+			},
+			"card_do1_ze6": {
+				"character": "多謝",
+				"translation": "thank you (for compliments or gifts)",
+				"contextualHint": "Use 多謝 when someone gives you a compliment, a gift, or a favour you didn't directly ask for."
+			},
+			"card_sai2_sau2_gaan1": {
+				"character": "洗手間",
+				"translation": "toilet / washroom / restroom"
+			},
+			"card_hai2_bin1_aa3": {
+				"character": "喺邊啊",
+				"translation": "where is? / where can I find?"
+			},
+			"card_zo2": {
+				"character": "左",
+				"translation": "left"
+			},
+			"card_jau6": {
+				"character": "右",
+				"translation": "right"
+			},
+			"card_hou2": {
+				"character": "好",
+				"translation": "good / alright"
+			},
+			"card_baat3_daat6_tung1": {
+				"character": "八達通",
+				"translation": "Octopus card (stored-value smart card)",
+				"contextualHint": "Say \"八達通，唔該！\" (baat3 daat6 tung1, m4 goi1!) at any MTR customer service centre to request or top up an Octopus card."
+			},
+			"card_jat1": {
+				"character": "一",
+				"translation": "one"
+			},
+			"card_ji6": {
+				"character": "二",
+				"translation": "two"
+			},
+			"card_saam1": {
+				"character": "三",
+				"translation": "three"
+			},
+			"card_baak3": {
+				"character": "百",
+				"translation": "hundred"
+			},
+			"card_ji6_baak3_man1": {
+				"character": "二百蚊",
+				"translation": "two hundred dollars"
 			}
 		}
 	},
 	"feedback": {
-		"taxi": {
-			"success": {
-				"headline": "True Hongkonger Speed!",
-				"subtext": "The taxi driver understood your directions instantly and nodded. Perfect tones."
-			},
-			"warning": {
-				"headline": "The English Pivot",
-				"subtext": "The driver understood after a brief pause, then replied in English to confirm. Your accent gave you away."
-			},
-			"danger": {
-				"headline": "Complete Blank Stare",
-				"subtext": "The driver smiled politely and pointed at the meter. Your tones missed completely."
+		"hkia": {
+			"arrival": {
+				"success": {
+					"headline": "Natural-Born Hongkonger!",
+					"subtext": "The airport staff understood every word you said and didn't even blink. Kitty purrs with approval."
+				},
+				"warning": {
+					"headline": "The English Pivot",
+					"subtext": "The staff paused, then replied in English to confirm. Close — but your tones need a bit more work."
+				},
+				"danger": {
+					"headline": "Complete Blank Stare",
+					"subtext": "The staff smiled politely and pointed at the English signage. Kitty gives you a sympathetic nuzzle."
+				}
 			}
 		}
 	}

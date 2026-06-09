@@ -14,4 +14,16 @@
 	<ion-content color="light">
 		<ng-content/>
 	</ion-content>
+	@if (previousButtonEnabled() !== undefined || nextButtonEnabled() !== undefined) {
+		<ion-footer>
+			<ion-toolbar>
+				@if (previousButtonEnabled() !== undefined) {
+					<ion-button fill="clear" [disabled]="previousButtonEnabled() === false" slot="start" (click)="clickPrevious.emit()">{{ "page.previous" | transloco }}</ion-button>
+				}
+				@if (nextButtonEnabled() !== undefined) {
+					<ion-button fill="clear" [disabled]="nextButtonEnabled() === false" slot="end" (click)="clickNext.emit()">{{ nextButtonLabelKey() | transloco }}</ion-button>
+				}
+			</ion-toolbar>
+		</ion-footer>
+	}
 </ion-app>
